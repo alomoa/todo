@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+:root{
+    --background-color: linear-gradient(156.73deg,#CFBFEA 17.66%, #EEB6A6 90.62%);
+    --input-height: 2.2em;
+    --input-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    --input-font: 0.75em;
+    --input-padding: 0.75em;
+    --input-border: solid 1px #ffffff;
+    --input-background: rgba(255, 255, 255, 0.5);
+
+    --input-priority-width: 2.375em;
+
+    --todo-color: hsla(0, 0%, 100%, 0.5);
+    --todo-padding: 1em;
+
+    --radius: 8px;
+}
+
+body{
+    height: 100vh;
+    font-size: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Merriweather', serif;
+
+    background: linear-gradient(151.97deg, #9E7ED4 0%, #DD785B 100%);
+
+}
+
+#app{
+    margin-top: 2em;
+
+    padding: 2em;
+    background: var(--background-color);
+
+    height: 43em;
+
+    border-radius: var(--radius);
+
+    overflow:scroll;
+
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+h1{
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.filter{
+    margin-top: 2.2em;
+    width: 10em;
+}
+
+.line{
+    margin-top: 0.75em;
+
+    height: 1px;
+    width: 100%;
+
+    background: #ffffff;
+}
+
+
+.add-container{
+    margin-top: 1.5em;
+    display: flex;
+    gap: 12px;
+}
+
+input{
+    background: var(--input-background);
+    font: var(--input-font);
+
+    box-shadow: var(--input-shadow);
+
+    border: var(--input-border);
+    padding: var(--input-padding);
+    border-radius: var(--radius);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input:focus{
+    outline:none;
+}
+
+.input-priority{
+    width: var(--input-priority-width);
+
+    text-align: center;
+}
+
+.submit-button{
+    background: var(--input-background);
+    padding: 0 0.30em 0 0.30em;
+
+    border: var(--input-border);
+
+    font-size: 42px;
+    border-radius: var(--radius);
+}
+
+.submit-button:hover{
+    cursor: pointer;
+}
+
+ul{
+    margin-top: 2em;
+
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.75em;
+}
+
+li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background: var(--todo-color);
+    padding: var(--todo-padding);
+
+    border-radius: var(--radius);
+
+    gap: 1em;
+
+    font-weight: 500;
+}
+
+.priority{
+    font-weight: bold;
+}
+
+.remove{
+    margin-left: auto;
+    padding: 0.5em;
+
+    border: none;
+    border-radius: var(--radius) ;
+}
+
+.remove:hover{
+    cursor: pointer;
+}
