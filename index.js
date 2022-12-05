@@ -11,16 +11,17 @@ let app = new Vue({
         inputText: "",
         inputPriority: "",
         todos: [{
-            text: "Eat breakfast",
+            text: "Make a to-do list",
             priority: 1,
-            id: 1
+            timeAdded: new Date()
         },
         {
-            text: "Do the laundry",
+            text: "Complete to-do list",
             priority: 2,
-            id: 2
+            timeAdded: new Date()
         }
-        ]
+    ],
+        orderBy: "Priority"
     },
 
     methods: {
@@ -33,23 +34,54 @@ let app = new Vue({
             let todo = {
                 text: this.inputText,
                 priority: parseInt(this.inputPriority),
-                id: count
+                id: count,
+                timeAdded: new Date()
             }
 
-            let index = 0
-            for (let i = 0; i < this.todos.length; i++) {
-                if (this.todos[i].priority >= todo.priority) {
-                    index = i;
-                    break;
-                }
-                index = i === this.todos.length - 1 ? i + 1 : i;
-            }
+            this.todos.push(todo)
 
-            this.todos.splice(index, 0, todo);
+            if(this.orderBy === "Priority"){
+                this.orderByPriority()
+            }
+            else{
+                this.orderByDate()
+            }
 
             count++
             this.inputText = "";
             this.inputPriority = null;
+        },
+
+        orderByPriority: function(){
+            function compare(a, b){
+                if(a.priority < b.priority){
+                    return -1;
+                }
+                if(a.priority > b.priority){
+                    return 1;
+                }
+                return 0;
+            }
+
+            this.todos.sort(compare)
+
+            this.orderBy= 'Priority'
+        },
+        orderByDate: function () {
+            function compare(a, b){
+                if(a.timeAdded < b.timeAdded){
+                    return -1;
+                }
+                if(a.timeAdded > b.timeAdded){
+                    return 1;
+                }
+                return 0;
+            }
+
+            this.todos.sort(compare)
+
+            this.orderBy= 'Date'
         }
+
     }
 })

@@ -110,6 +110,8 @@ input:focus{
     text-align: center;
 }
 
+
+
 .submit-button{
     background: var(--input-background);
     padding: 0 0.30em 0 0.30em;
@@ -120,7 +122,7 @@ input:focus{
     border-radius: var(--radius);
 }
 
-.submit-button:hover{
+.submit-button:hover, button{
     cursor: pointer;
 }
 
@@ -152,6 +154,26 @@ li{
 
 .priority{
     font-weight: bold;
+}
+
+.button-container{
+    display: flex;
+    
+
+    margin-top: 2em;
+
+    gap: 1em;
+
+    justify-content: flex-end;
+}
+
+.order{
+    background: var(--input-background);
+    padding: 0.4em 0.4em 0.4em 0.40em;
+
+    border: var(--input-border);
+
+    border-radius: var(--radius);
 }
 
 .remove{

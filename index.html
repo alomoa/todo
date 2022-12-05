@@ -26,24 +26,36 @@
         >
 
         <div class="line"></div>
-
+        
+        
         <form @submit.prevent="addToDo" class="add-container">
             <input type="text" name="name" v-model="inputText" required="required" autocomplete="off" placeholder="Task">
             <input type="number" name="priority" v-model="inputPriority" required="required" class="input-priority" min="1" max="10" placeholder="Prio">
             <button
-                type="submit"
-                class="submit-button"
+            type="submit"
+            class="submit-button"
             >
-                +
+            +
             </button>
         </form>
 
+
+        <div class="button-container">
+
+            <button v-on:click="orderByPriority" class="order">
+                Order by priority
+            </button>
+
+            <button v-on:click="orderByDate" class="order">
+                Order by date
+            </button>
+        </div>
 
         <ul>
             <li
                 v-for="todo in todos"
                 v-bind:key="todo.id"
-                v-if="filter === null || filter === ''|| parseInt(filter) === todo.priority"
+                v-if="filter === null || filter === ''|| parseInt(filter) >= todo.priority"
             >
                 <p>{{todo.text}}</p>
                 <bold class="priority">{{todo.priority}}</bold>
