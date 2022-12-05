@@ -8,13 +8,23 @@ let app = new Vue({
     data: {
         title: "To-do",
         filter: null,
-        inputText: "Complete task",
-        inputPriority: 2,
-        todos: []
+        inputText: "",
+        inputPriority: "",
+        todos: [{
+            text: "Eat breakfast",
+            priority: 1,
+            id: 1
+        },
+        {
+            text: "Do the laundry",
+            priority: 2,
+            id: 2
+        }
+        ]
     },
 
     methods: {
-        remove: function(id){
+        remove: function (id) {
             const index = this.todos.findIndex(item => item.id === id)
             this.todos.splice(index, 1)
         },
@@ -27,15 +37,15 @@ let app = new Vue({
             }
 
             let index = 0
-            for(let i = 0; i < this.todos.length; i++){
-                if(this.todos[i].priority >= todo.priority){
+            for (let i = 0; i < this.todos.length; i++) {
+                if (this.todos[i].priority >= todo.priority) {
                     index = i;
                     break;
                 }
-                index = i === this.todos.length - 1 ? i+1 : i;
+                index = i === this.todos.length - 1 ? i + 1 : i;
             }
 
-            this.todos.splice(index,0,todo);
+            this.todos.splice(index, 0, todo);
 
             count++
             this.inputText = "";
